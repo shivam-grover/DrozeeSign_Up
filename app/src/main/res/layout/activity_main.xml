@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradientgreen"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@id/imageButton"
+        android:layout_marginBottom="85sp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="10sp"
+            android:background="@drawable/edittext"
+            android:drawableLeft="@drawable/ic_action_name"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textPersonName"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10sp"
+            android:background="@drawable/edittext"
+            android:drawableLeft="@drawable/ic_acia"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/edittext"
+            android:drawableLeft="@drawable/ic_acia"
+            android:ems="10"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/imageButton"
+        android:layout_width="265dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginBottom="125dp"
+        android:background="@drawable/edittext"
+        android:text="Sign Up"
+        android:textColor="#F27122"
+        android:textSize="30sp"
+        app:srcCompat="@drawable/edittext" />
+
+</RelativeLayout>

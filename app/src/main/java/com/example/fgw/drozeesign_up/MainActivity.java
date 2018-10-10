@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,6 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     Button imageButton;
     private FirebaseAuth mAuth;
     public String email,password,confirm;
+    public FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +84,26 @@ public class MainActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     String UserID = mAuth.getCurrentUser().getUid();
                     Toast.makeText(getApplicationContext(), "You are registered", Toast.LENGTH_SHORT).show();
+                    user = mAuth.getCurrentUser();
+                    user.sendEmailVerification()
+                            .addOnCompleteListener(MainActivity.this, new OnCompleteListener() {
+                                @Override
+                                public void onComplete(@NonNull Task task) {
+                                    // Re-enable button
+//                                    findViewById(R.id.verify_email_button).setEnabled(true);
 
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(MainActivity.this,
+                                                "Verification email sent to " + user.getEmail(),
+                                                Toast.LENGTH_SHORT).show();
+                                    } else {
+//                                        Log.e(TAG, "sendEmailVerification", task.getException());
+//                                        Toast.makeText(EmailPasswordActivity.this,
+//                                                "Failed to send verification email.",
+//                                                Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
 //                    Users users = new Users(email,false,UserID,false);
 //                    databaseReference.child(UserID).setValue (users);
 
